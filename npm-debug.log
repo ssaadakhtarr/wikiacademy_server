@@ -1,0 +1,32 @@
+0 info it worked if it ends with ok
+1 verbose cli [
+1 verbose cli   'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Users\\123\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'start'
+1 verbose cli ]
+2 info using npm@3.10.10
+3 info using node@v13.14.0
+4 verbose run-script [ 'prestart', 'start', 'poststart' ]
+5 info lifecycle server@1.0.0~prestart: server@1.0.0
+6 silly lifecycle server@1.0.0~prestart: no script for prestart, continuing
+7 info lifecycle server@1.0.0~start: server@1.0.0
+8 verbose lifecycle server@1.0.0~start: unsafe-perm in lifecycle true
+9 verbose lifecycle server@1.0.0~start: PATH: C:\Users\123\AppData\Roaming\npm\node_modules\npm\bin\node-gyp-bin;C:\Users\123\Desktop\WikiSec\Server\node_modules\.bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\PostgreSQL\10\bin;C:\Program Files\PostgreSQL\10\lib\;C:\Program Files (x86)\PuTTY\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Notepad++;C:\Program Files\Gits\cmd;C:\Program Files\Perforce;C:\Program Files\nodejs\;C:\Users\123\AppData\Roaming\npm;C:\Users\123\AppData\Local\Programs\Microsoft VS Code\bin
+10 verbose lifecycle server@1.0.0~start: CWD: C:\Users\123\Desktop\WikiSec\Server
+11 silly lifecycle server@1.0.0~start: Args: [ '/d /s /c', 'nodemon index.js' ]
+12 verbose stack Error: kill ENOSYS
+12 verbose stack     at process.kill (internal/process/per_thread.js:198:13)
+12 verbose stack     at process.listener (C:\Users\123\AppData\Roaming\npm\node_modules\npm\node_modules\npmlog\node_modules\gauge\node_modules\signal-exit\index.js:86:15)
+12 verbose stack     at process.emit (events.js:327:22)
+13 verbose cwd C:\Users\123\Desktop\WikiSec\Server
+14 error Windows_NT 6.2.9200
+15 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Users\\123\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js" "start"
+16 error node v13.14.0
+17 error npm  v3.10.10
+18 error code ENOSYS
+19 error errno -4054
+20 error syscall kill
+21 error kill ENOSYS
+22 error If you need help, you may report this error at:
+22 error     <https://github.com/npm/npm/issues>
+23 verbose exit [ -4054, true ]
