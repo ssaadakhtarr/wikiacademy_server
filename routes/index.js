@@ -5,6 +5,7 @@ const updateProfile = require("../modules/updateProfile");
 const addTask = require("../modules/addTasks");
 const getRoom = require("../modules/getRoom");
 const rankUpdate = require("../modules/rankUpdate");
+const blogs = require("../modules/blogs");
 
 const base = "/";
 router.get(`${base}login`, authenticationController.getLogin);
@@ -33,5 +34,8 @@ router.post(`${base}isAnswered`, getRoom.isAnswered);
 router.post(`${base}getProgress`, getRoom.getProgress);
 
 router.post(`${base}updateRank`, rankUpdate.updateRank);
+
+router.get(`${base}getBlogs`, blogs.getBlog);
+router.post(`${base}addBlog`, blogs.addBlog);
 
 module.exports = router;

@@ -3,6 +3,8 @@ const db = require("../db/connection");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const moment = require('moment');
+const cookieParser = require("cookie-parser");
+const session = require("express-session");
 
 exports.getLogin = function (req, res) {
   if (req.session.user) {
@@ -89,6 +91,7 @@ exports.login = function (req, res) {
             result[0].dateOfBirth = moment(result[0].dateOfBirth).format('YYYY-MM-DD');
             console.log(result);
             res.json({ auth: true, token: token, result: result });
+            
           } else {
             res.json({ auth: false, message: "wrong username/password" });
           }
