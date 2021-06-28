@@ -56,7 +56,7 @@ router.get(`${base}getDashboard/:id`,dashboard.getDashboard);
 // saad's work here
 
 
-
+router.get(`${base}getUserData`, admin.getUserData);
 
 
 

@@ -121,7 +121,12 @@ exports.getAdminData = function (req, res){
 
 // saad's work
 
-
+exports.getUserData = function (req, res) {
+    db.query(`SELECT id, username FROM users`, (err, result) => {
+        res.send(result);
+    })
+    
+}
 
 
 

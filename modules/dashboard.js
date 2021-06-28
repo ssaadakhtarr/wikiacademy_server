@@ -12,7 +12,6 @@ exports.getDashboard = function (req, res) {
           rank,
           points,
           level,
-         
         });
       }
     );
