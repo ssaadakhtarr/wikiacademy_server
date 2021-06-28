@@ -6,6 +6,7 @@ const addTask = require("../modules/addTasks");
 const getRoom = require("../modules/getRoom");
 const rankUpdate = require("../modules/rankUpdate");
 const blogs = require("../modules/blogs");
+const admin = require("../modules/admin");
 
 const base = "/";
 router.get(`${base}login`, authenticationController.getLogin);
@@ -38,5 +39,24 @@ router.post(`${base}updateRank`, rankUpdate.updateRank);
 router.get(`${base}getBlogs`, blogs.getBlog);
 router.post(`${base}addBlog`, blogs.addBlog);
 router.post(`${base}getBlogPage`,blogs.getBlogPage);
+
+// areeb's work here
+
+
+
+
+
+
+
+
+// saad's work here
+
+
+
+
+
+
+
+
 
 module.exports = router;
