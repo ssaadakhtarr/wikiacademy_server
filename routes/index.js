@@ -7,6 +7,7 @@ const getRoom = require("../modules/getRoom");
 const rankUpdate = require("../modules/rankUpdate");
 const blogs = require("../modules/blogs");
 const admin = require("../modules/admin");
+const dashboard=require("../modules/dashboard");
 
 const base = "/";
 router.get(`${base}login`, authenticationController.getLogin);
@@ -41,6 +42,9 @@ router.post(`${base}addBlog`, blogs.addBlog);
 router.post(`${base}getBlogPage`,blogs.getBlogPage);
 
 // areeb's work here
+router.get(`${base}getAdminData`,admin.getAdminData);
+
+router.get(`${base}getDashboard/:id`,dashboard.getDashboard);
 
 
 
