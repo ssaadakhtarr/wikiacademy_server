@@ -9,7 +9,7 @@ exports.getBlog = function (req, res) {
        result.map((i, index) => {
            db.query(`SELECT username FROM users WHERE id = ?`, [i.userId], (err, result1) => {
             //    console.log(result1);
-               newArr.push({...i, username: result1[0]?.username})
+               newArr.push({...i, username: result1[0].username})
             //    console.log(newArr);
             if (result.length === index+1) {
                 console.log(newArr);
@@ -36,4 +36,19 @@ exports.addBlog = function (req, res) {
     })
 
     
+}
+
+exports.getBlogPage=function(req,res){
+    var newArr=[];
+    const blogname=req.body.blogname;
+
+    db.query(`SELECT * FROM blog WHERE blogTitle = ?`,[blogname],(err,result)=>{
+        db.query(`SELECT username,summary from users WHERE id=?`,[result[0].userId],(err,result1)=>{
+            newArr.push({...result[0],username:result1[0].username,summary:result1[0].summary})
+            res.send(newArr)
+       
+        })
+   
+
+    })
 }

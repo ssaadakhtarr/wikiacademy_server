@@ -37,5 +37,6 @@ router.post(`${base}updateRank`, rankUpdate.updateRank);
 
 router.get(`${base}getBlogs`, blogs.getBlog);
 router.post(`${base}addBlog`, blogs.addBlog);
+router.post(`${base}getBlogPage`,blogs.getBlogPage);
 
 module.exports = router;
