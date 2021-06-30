@@ -57,6 +57,12 @@ router.get(`${base}getDashboard/:id`,dashboard.getDashboard);
 
 
 router.get(`${base}getUserData`, admin.getUserData);
+router.post(`${base}deleteUser`, admin.deleteUser);
+router.get(`${base}getAllRooms`, admin.getAllRooms);
+router.get(`${base}getPendingBlogs`, admin.getPendingBlogs);
+router.post(`${base}discardBlog`, admin.discardBlog);
+router.post(`${base}approveBlog`, admin.approveBlog);
+router.get(`${base}getAllBlogs`, admin.getAllBlogs);
 
 
 

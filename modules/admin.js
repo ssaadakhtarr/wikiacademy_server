@@ -123,14 +123,59 @@ exports.getAdminData = function (req, res){
 
 exports.getUserData = function (req, res) {
     db.query(`SELECT id, username FROM users`, (err, result) => {
+        // console.log(result);
         res.send(result);
     })
     
 }
 
+exports.deleteUser = function (req, res) {
+    const username = req.body.temp;
+    db.query(`DELETE FROM users WHERE username = ?`, [username], (err, result) => {
+        console.log(err);
+        console.log(result);
+    })
+}
 
+exports.getAllRooms = function (req, res) {
+    db.query(`SELECT roomsId, roomName FROM rooms`, (err, result) => {
+        console.log(err);
+        console.log(result);
+        res.send(result);
+    })
+}
 
+exports.getPendingBlogs = function (req, res) {
+    db.query(`SELECT blogId, blogTitle from blog WHERE blogStatus = 0`, (err, result) => {
+        // console.log(err);
+        // console.log(result);
+        res.send(result);
+    })
+}
 
+exports.discardBlog = function (req, res) {
+    const blogId = req.body.id
+    db.query(`DELETE from blog WHERE blogId = ?`, [blogId], (err, result) => {
+        console.log(err);
+        console.log(result);
+    })
+}
+
+exports.approveBlog = function (req, res) {
+    const blogId = req.body.id
+    // console.log(blogId);
+    db.query(`UPDATE blog SET blogStatus = 1 WHERE blogId = ?`, [blogId], (err, result) => {
+        
+    })
+}
+
+exports.getAllBlogs = function (req, res) {
+    db.query(`SELECT blogId, blogTitle from blog WHERE blogStatus = 1`, (err, result) => {
+        // console.log(err);
+        // console.log(result);
+        res.send(result);
+    })
+}
 
 
 

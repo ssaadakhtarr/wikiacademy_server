@@ -40,11 +40,16 @@ exports.addBlog = function (req, res) {
 
 exports.getBlogPage=function(req,res){
     var newArr=[];
-    const blogname=req.body.blogname;
+    const blogId=req.body.blogid;
 
-    db.query(`SELECT * FROM blog WHERE blogTitle = ?`,[blogname],(err,result)=>{
+    db.query(`SELECT * FROM blog WHERE blogId = ?`,[blogId],(err,result)=>{
+        console.log(err);
+        console.log(result);
         db.query(`SELECT username,summary from users WHERE id=?`,[result[0].userId],(err,result1)=>{
+            console.log(err);
+            console.log(result1);
             newArr.push({...result[0],username:result1[0].username,summary:result1[0].summary})
+            console.log(newArr);
             res.send(newArr)
        
         })
