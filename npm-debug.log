@@ -14,19 +14,34 @@
 9 verbose lifecycle server@1.0.0~start: PATH: C:\Users\123\AppData\Roaming\npm\node_modules\npm\bin\node-gyp-bin;C:\Users\123\Desktop\Wiki sec\server\node_modules\.bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\PostgreSQL\10\bin;C:\Program Files\PostgreSQL\10\lib\;C:\Program Files (x86)\PuTTY\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Notepad++;C:\Program Files\Gits\cmd;C:\Program Files\Perforce;C:\Program Files\nodejs\;C:\Users\123\AppData\Roaming\npm;C:\Users\123\AppData\Local\Programs\Microsoft VS Code\bin
 10 verbose lifecycle server@1.0.0~start: CWD: C:\Users\123\Desktop\Wiki sec\server
 11 silly lifecycle server@1.0.0~start: Args: [ '/d /s /c', 'nodemon index.js' ]
-12 verbose stack Error: kill ENOSYS
-12 verbose stack     at process.kill (internal/process/per_thread.js:198:13)
-12 verbose stack     at process.listener (C:\Users\123\AppData\Roaming\npm\node_modules\npm\node_modules\npmlog\node_modules\gauge\node_modules\signal-exit\index.js:86:15)
-12 verbose stack     at process.emit (events.js:327:22)
-13 verbose cwd C:\Users\123\Desktop\Wiki sec\server
-14 error Windows_NT 6.2.9200
-15 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Users\\123\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js" "start"
-16 error node v13.14.0
-17 error npm  v3.10.10
-18 error code ENOSYS
-19 error errno -4054
-20 error syscall kill
-21 error kill ENOSYS
-22 error If you need help, you may report this error at:
-22 error     <https://github.com/npm/npm/issues>
-23 verbose exit [ -4054, true ]
+12 silly lifecycle server@1.0.0~start: Returned: code: 3221225786  signal: null
+13 info lifecycle server@1.0.0~start: Failed to exec start script
+14 verbose stack Error: server@1.0.0 start: `nodemon index.js`
+14 verbose stack Exit status 3221225786
+14 verbose stack     at EventEmitter.<anonymous> (C:\Users\123\AppData\Roaming\npm\node_modules\npm\lib\utils\lifecycle.js:255:16)
+14 verbose stack     at EventEmitter.emit (events.js:315:20)
+14 verbose stack     at ChildProcess.<anonymous> (C:\Users\123\AppData\Roaming\npm\node_modules\npm\lib\utils\spawn.js:40:14)
+14 verbose stack     at ChildProcess.emit (events.js:315:20)
+14 verbose stack     at maybeClose (internal/child_process.js:1026:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:286:5)
+15 verbose pkgid server@1.0.0
+16 verbose cwd C:\Users\123\Desktop\Wiki sec\server
+17 error Windows_NT 6.2.9200
+18 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Users\\123\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js" "start"
+19 error node v13.14.0
+20 error npm  v3.10.10
+21 error code ELIFECYCLE
+22 error server@1.0.0 start: `nodemon index.js`
+22 error Exit status 3221225786
+23 error Failed at the server@1.0.0 start script 'nodemon index.js'.
+23 error Make sure you have the latest version of node.js and npm installed.
+23 error If you do, this is most likely a problem with the server package,
+23 error not with npm itself.
+23 error Tell the author that this fails on your system:
+23 error     nodemon index.js
+23 error You can get information on how to open an issue for this project with:
+23 error     npm bugs server
+23 error Or if that isn't available, you can get their info via:
+23 error     npm owner ls server
+23 error There is likely additional logging output above.
+24 verbose exit [ 1, true ]
