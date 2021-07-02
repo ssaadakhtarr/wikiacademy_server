@@ -272,6 +272,9 @@ exports.isAnswered = function (req, res) {
   db.query(`UPDATE userRooms SET isAnswered = ?, progBar = ? WHERE questionsId = ?`, [1, 4, questionsId], (err, result) => {
     // console.log(err);
     // console.log(result);
+    db.query(`UPDATE users SET points = points + 100`, (err, result0) => {
+      
+    })
   db.query(`SELECT * FROM userRooms WHERE userId = ? AND roomsId = ?`, [userId, roomsId], (err, result1) => {
     // console.log(err);
     // console.log(result1);
