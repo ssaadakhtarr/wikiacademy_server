@@ -44,8 +44,8 @@ router.post(`${base}getBlogPage`,blogs.getBlogPage);
 
 // areeb's work here
 router.get(`${base}getAdminData`,admin.getAdminData);
-
 router.get(`${base}getDashboard/:id`,dashboard.getDashboard);
+router.post(`${base}getJoinedRooms`, dashboard.getJoinedRooms);
 
 
 
