@@ -11,9 +11,9 @@ exports.getHomeData = function (req, res) {
           //    console.log(result1);
           newArr.push({ ...i, username: result1[0].username });
           //    console.log(newArr);
-          // if (result.length === index + 1) {
-          //   // console.log(newArr);
-          // } else {
+          if (result.length === index + 1) {
+            // console.log(newArr);
+          } else {
             db.query(`SELECT * FROM rooms`, (err, result_1) => {
               // console.log(err);
               // console.log(result_1);
@@ -22,7 +22,7 @@ exports.getHomeData = function (req, res) {
               res.send({ newArr, result_1 });
             });
           }
-        
+        }
       );
     });
   });
