@@ -10,6 +10,8 @@ const admin = require("../modules/admin");
 const dashboard=require("../modules/dashboard");
 const home = require("../modules/home");
 const leaderboard =require("../modules/leaderboard")
+const publicProfile = require("../modules/publicProfile");
+
 const base = "/";
 router.get(`${base}login`, authenticationController.getLogin);
 router.post(`${base}register`, authenticationController.register);
@@ -68,7 +70,7 @@ router.get(`${base}getAllBlogs`, admin.getAllBlogs);
 router.get(`${base}getHomeData`, home.getHomeData);
 router.get(`${base}getLeaderboard`,leaderboard.getLeaderboard);
 
-
+router.post(`${base}getPublicProfile`, publicProfile.getPublicProfile);
 
 
 
