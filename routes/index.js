@@ -39,6 +39,7 @@ router.post(`${base}isAnswered`, getRoom.isAnswered);
 router.post(`${base}getProgress`, getRoom.getProgress);
 
 router.post(`${base}updateRank`, rankUpdate.updateRank);
+router.post(`${base}updateTitle`, rankUpdate.updateTitle);
 
 router.get(`${base}getBlogs`, blogs.getBlog);
 router.post(`${base}addBlog`, blogs.addBlog);

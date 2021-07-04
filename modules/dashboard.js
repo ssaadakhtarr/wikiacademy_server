@@ -52,7 +52,7 @@ exports.getJoinedRooms = function (req, res) {
                   ...j,
                   progBar: result2[0]["COUNT(progBar)"],
                 });
-                console.log(progressRoom);
+                // console.log(progressRoom);
                 if (progressRoom.length === roomsIds.length) {
                   res.send(progressRoom);
                 }
