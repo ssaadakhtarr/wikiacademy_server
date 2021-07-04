@@ -10,13 +10,22 @@ exports.updateDetails = function (req, res) {
     const lastName = name[1];
     const username = req.body.username;
     const email = req.body.email;
-
-    db.query(`UPDATE users SET firstName = ?, lastName = ?, username = ?, email = ? WHERE id = ?`, [firstName, lastName, username, email, id], (err, result) => {
-        console.log(result);
-    });
-
-
+    db.query(
+        `SELECT COUNT(*) FROM users WHERE email='${email}' OR username='${username}'`,
+        (err, result) => {
+          console.log(result);
+          if (result[0]["COUNT(*)"] > 0) {
+            res.json({ message: "User already exists" });
+          } else {
+            db.query(`UPDATE users SET firstName = ?, lastName = ?, username = ?, email = ? WHERE id = ?`, [firstName, lastName, username, email, id], (err, result) => {
+                console.log(result);
+            });
+        
+          }
+        }
+      );
 }
+
 
 exports.changePassword = function (req, res) {
     const id = req.body.id;

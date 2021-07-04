@@ -20,6 +20,8 @@ exports.register = function (req, res) {
   const username = req.body.username;
   const email = req.body.email;
   const password = req.body.password;
+  
+  
 
   bcrypt.hash(password, saltRounds, (err, hash) => {
     if (err) {
