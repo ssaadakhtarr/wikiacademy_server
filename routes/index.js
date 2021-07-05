@@ -1,5 +1,5 @@
+// areeb's work here
 const router = require("express").Router();
-
 const authenticationController = require("../modules/authenticationController");
 const updateProfile = require("../modules/updateProfile");
 const addTask = require("../modules/addTasks");
@@ -45,17 +45,10 @@ router.get(`${base}getBlogs`, blogs.getBlog);
 router.post(`${base}addBlog`, blogs.addBlog);
 router.post(`${base}getBlogPage`,blogs.getBlogPage);
 
-// areeb's work here
+
 router.get(`${base}getAdminData`,admin.getAdminData);
 router.get(`${base}getDashboard/:id`,dashboard.getDashboard);
 router.post(`${base}getJoinedRooms`, dashboard.getJoinedRooms);
-
-
-
-
-
-
-
 
 // saad's work here
 
