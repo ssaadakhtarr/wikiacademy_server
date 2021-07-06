@@ -2,7 +2,7 @@ const db = require("../db/connection");
 
 exports.getBlog = function (req, res) {
   var newArr = [];
-  db.query(`SELECT * FROM blog`, (err, result) => {
+  db.query(`SELECT * FROM blog WHERE blogStatus = 1`, (err, result) => {
     // console.log(err);
     // console.log(result);
     // res.send(result);
