@@ -11,6 +11,8 @@ const dashboard=require("../modules/dashboard");
 const home = require("../modules/home");
 const leaderboard =require("../modules/leaderboard")
 const publicProfile = require("../modules/publicProfile");
+const adminLogin = require("../modules/adminLogin");
+
 
 const base = "/";
 router.get(`${base}login`, authenticationController.getLogin);
@@ -46,13 +48,13 @@ router.post(`${base}addBlog`, blogs.addBlog);
 router.post(`${base}getBlogPage`,blogs.getBlogPage);
 
 
-router.get(`${base}getAdminData`,admin.getAdminData);
 router.get(`${base}getDashboard/:id`,dashboard.getDashboard);
 router.post(`${base}getJoinedRooms`, dashboard.getJoinedRooms);
 
 // saad's work here
 
 
+router.get(`${base}getAdminData`,admin.getAdminData);
 router.get(`${base}getUserData`, admin.getUserData);
 router.post(`${base}deleteUser`, admin.deleteUser);
 router.get(`${base}getAllRooms`, admin.getAllRooms);
@@ -62,9 +64,11 @@ router.post(`${base}approveBlog`, admin.approveBlog);
 router.get(`${base}getAllBlogs`, admin.getAllBlogs);
 
 router.get(`${base}getHomeData`, home.getHomeData);
+
 router.get(`${base}getLeaderboard`,leaderboard.getLeaderboard);
 
 router.post(`${base}getPublicProfile`, publicProfile.getPublicProfile);
+router.post(`${base}adminLogin`, adminLogin.checkAdmin)
 
 
 
