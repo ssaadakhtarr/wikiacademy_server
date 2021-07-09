@@ -12,6 +12,7 @@ const home = require("../modules/home");
 const leaderboard =require("../modules/leaderboard")
 const publicProfile = require("../modules/publicProfile");
 const adminLogin = require("../modules/adminLogin");
+const paths = require("../modules/paths");
 
 
 const base = "/";
@@ -70,7 +71,7 @@ router.get(`${base}getLeaderboard`,leaderboard.getLeaderboard);
 router.post(`${base}getPublicProfile`, publicProfile.getPublicProfile);
 router.post(`${base}adminLogin`, adminLogin.checkAdmin)
 
-
+router.get(`${base}getPath/:pathName`, paths.getPath);
 
 
 module.exports = router;

@@ -2,13 +2,27 @@ const db = require("../db/connection");
 
 exports.sendRoomDetails = function (req, res) {
     const roomName = req.body.roomName;
+    const roomTitle = req.body.roomTitle;
+    const paths = [req.body.tools, req.body.web, req.body.vuln, req.body.beginner];
     const roomTagline = req.body.roomTagline;
     const roomImage = req.body.roomImage;
     const roomDescription = req.body.roomDescription;
-    db.query(`INSERT INTO rooms (roomName, roomTagline, roomImage, roomDescription) VALUES (?, ?, ?, ?)`, [roomName, roomTagline, roomImage, roomDescription], (err, result) => {
-        console.log(err);
-        console.log(result);
+   
+    
+    db.query(`INSERT INTO rooms (roomName, roomTitle, roomTagline, roomImage, roomDescription) VALUES (?, ?, ?, ?, ?)`, [roomName, roomTitle, roomTagline, roomImage, roomDescription], (err, result) => {
+        // console.log(err);
+        // console.log(result.insertId);
+        // console.log(fields);
+        db.query(`INSERT INTO paths (roomsId) VALUES (?)`, [result.insertId], (err, result1) => {
+            // console.log(err);
+            // console.log(result1);
+            db.query(`UPDATE paths SET tools = ?, web = ?, vuln = ?, beginner =? WHERE roomsId = ?`, [req.body.tools, req.body.web, req.body.vuln, req.body.beginner, result.insertId], (err, result2)=>{
+                console.log(err);
+                console.log(result2);
+            })
+        })
     })
+
 }
 
 exports.sendTask = function (req, res) {
