@@ -91,7 +91,8 @@ exports.login = function (req, res) {
             //this contains every info about the logged in user
             req.session.user = result;
             result[0].dateOfBirth = moment(result[0].dateOfBirth).format('YYYY-MM-DD');
-            console.log(result);
+            // console.log(result);
+            console.log(req.headers.cookie);
             res.json({ auth: true, token: token, result: result });
             
           } else {
@@ -104,6 +105,26 @@ exports.login = function (req, res) {
     }
   );
 };
+
+
+exports.setSession = function (req, res) {
+  const username = req.body.username;
+  const sessionCookie = req.body.sessionCookie;
+  console.log(username, sessionCookie);
+  db.query(`UPDATE users SET session = ? WHERE username = ?`, [sessionCookie, username], (err, result) => {
+    // console.log(err);
+    // console.log(result);
+  })
+}
+
+exports.getSession = function (req,res) {
+  const username = req.body.username;
+  db.query(`SELECT session from users WHERE username = ?`, [username], (err, result) => {
+    // console.log(err);
+    // console.log(result);
+    res.send(result);
+  })
+}
 
 exports.logout = function (req, res) {
   req.session.destroy();

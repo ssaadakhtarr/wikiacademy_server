@@ -13,6 +13,7 @@ const leaderboard =require("../modules/leaderboard")
 const publicProfile = require("../modules/publicProfile");
 const adminLogin = require("../modules/adminLogin");
 const paths = require("../modules/paths");
+const flags = require("../modules/flags");
 
 
 const base = "/";
@@ -25,6 +26,8 @@ router.get(
 );
 router.post(`${base}login`, authenticationController.login);
 router.post(`${base}logout`, authenticationController.logout);
+router.post(`${base}setSession`, authenticationController.setSession);
+router.post(`${base}getSession`, authenticationController.getSession);
 
 router.post(`${base}updateDetails`, updateProfile.updateDetails);
 router.post(`${base}changePassword`, updateProfile.changePassword);
@@ -69,9 +72,14 @@ router.get(`${base}getHomeData`, home.getHomeData);
 router.get(`${base}getLeaderboard`,leaderboard.getLeaderboard);
 
 router.post(`${base}getPublicProfile`, publicProfile.getPublicProfile);
+
 router.post(`${base}adminLogin`, adminLogin.checkAdmin)
+router.post(`${base}setAdminSession`, adminLogin.setAdminSession);
+router.post(`${base}adminLogout`, adminLogin.adminLogout);
 
 router.get(`${base}getPath/:pathName`, paths.getPath);
+
+router.post(`${base}checkFlag`, flags.checkFlag);
 
 
 module.exports = router;
