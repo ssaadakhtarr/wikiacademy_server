@@ -53,7 +53,7 @@ exports.getJoinedRooms = function (req, res) {
   const username = req.body.username;
   const roomsIds = [];
   const progressRoom = [];
-
+console.log(username);
   db.query(
     `SELECT id FROM users WHERE username = ?`,
     [username],

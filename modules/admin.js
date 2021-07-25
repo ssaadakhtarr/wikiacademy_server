@@ -48,7 +48,7 @@ exports.deleteUser = function (req, res) {
 }
 
 exports.getAllRooms = function (req, res) {
-    db.query(`SELECT roomsId, roomName FROM rooms`, (err, result) => {
+    db.query(`SELECT roomsId, roomName, roomTitle FROM rooms`, (err, result) => {
         console.log(err);
         console.log(result);
         res.send(result);
@@ -87,6 +87,43 @@ exports.getAllBlogs = function (req, res) {
     })
 }
 
+
+exports.deleteRoom = function (req,res) {
+    const roomId = req.body.roomId;
+    const taskId = []
+
+    db.query(`SELECT tasksId FROM tasks WHERE roomsId = ?`, [roomId], (err, result) => {
+        // console.log(err);
+        // console.log(result);
+        result.map((i) => {
+            taskId.push(i.tasksId);
+        })
+        // console.log(taskId);
+        db.query(`DELETE FROM questions WHERE tasksId IN (?)`, [taskId], (err, result1) => {
+            // console.log(err);
+            // console.log(result1);
+            if(!err) {
+                db.query(`DELETE FROM tasks WHERE roomsId = ?`, [roomId], (err, result2)=>{
+                    // console.log(err);
+                    // console.log(result2);
+                    if (!err) {
+                        db.query(`DELETE FROM rooms WHERE roomsId = ?`, [roomId], (err, result3) => {
+                            // console.log(err);
+                            // console.log(result3);
+                        })
+                    }
+                })
+            }
+        })
+    })
+    // db.query(`SELECT tasks.tasksId, questions.questionsId FROM tasks, questions WHERE tasks.roomsId = ${roomId} AND questions.tasksId = tasks.tasksId`,(err, result) => {
+    //     console.log(err);
+    //     console.log(result);
+    //     // res.send(result);
+        
+    // })
+    console.log(taskId);
+}
 
 
 

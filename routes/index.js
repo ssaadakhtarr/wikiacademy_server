@@ -66,12 +66,15 @@ router.get(`${base}getPendingBlogs`, admin.getPendingBlogs);
 router.post(`${base}discardBlog`, admin.discardBlog);
 router.post(`${base}approveBlog`, admin.approveBlog);
 router.get(`${base}getAllBlogs`, admin.getAllBlogs);
+router.post(`${base}deleteRoom`, admin.deleteRoom);
 
 router.get(`${base}getHomeData`, home.getHomeData);
 
 router.get(`${base}getLeaderboard`,leaderboard.getLeaderboard);
 
 router.post(`${base}getPublicProfile`, publicProfile.getPublicProfile);
+router.post(`${base}getUsername`, publicProfile.getUsername);
+
 
 router.post(`${base}adminLogin`, adminLogin.checkAdmin)
 router.post(`${base}setAdminSession`, adminLogin.setAdminSession);

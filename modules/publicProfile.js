@@ -7,3 +7,13 @@ exports.getPublicProfile = function (req, res) {
         res.send(result);
     })
 }
+
+exports.getUsername = function (req, res) {
+    const userId = req.body.userId;
+
+    db.query(`SELECT username FROM users WHERE id = ?`, [userId], (err, result) => {
+        // console.log(err);
+        // console.log(result);
+        res.send(result);
+    })
+}
