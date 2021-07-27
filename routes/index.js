@@ -15,6 +15,8 @@ const adminLogin = require("../modules/adminLogin");
 const paths = require("../modules/paths");
 const flags = require("../modules/flags");
 
+const lab2 = require("../modules/labs/sqliOne");
+
 
 const base = "/";
 router.get(`${base}login`, authenticationController.getLogin);
@@ -83,6 +85,11 @@ router.post(`${base}adminLogout`, adminLogin.adminLogout);
 router.get(`${base}getPath/:pathName`, paths.getPath);
 
 router.post(`${base}checkFlag`, flags.checkFlag);
+
+
+// lab routes
+
+router.post(`${base}lab2/login`, lab2.login)
 
 
 module.exports = router;

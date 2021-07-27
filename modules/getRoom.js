@@ -2,7 +2,7 @@ const db = require("../db/connection");
 
 exports.getRoomDetails = function (req, res) {
   const roomname = req.body.roomname;
-  //console.log(roomname);
+  console.log(roomname);
   db.query(
     `SELECT * FROM rooms WHERE roomName = ?`,
     [roomname],
@@ -21,12 +21,14 @@ exports.getTaskDetails = function (req, res) {
     `SELECT roomsId FROM rooms WHERE roomName = ?`,
     [roomname],
     (err, result) => {
+      console.log(err);
+      console.log(result);
       db.query(
         `SELECT * FROM tasks WHERE roomsId = ?`,
         [result[0].roomsId],
         (err, result) => {
-          //console.log(err);
-          //console.log(result);
+          // console.log(err);
+          // console.log(result);
           // result.map((i) => {
           //   db.query(`SELECT * FROM questions WHERE tasksId = ?`, [i.tasksId], (err, result2) => {
           //     tasks.push({task: result, questions: result2});
