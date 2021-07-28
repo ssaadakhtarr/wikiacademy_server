@@ -15,8 +15,8 @@ var db = mysql.createConnection({
   password: "SE0451980nadeem",
   database: "wikisecdb",
   port: 3306,
+  multipleStatements: true,
 });
-
 
 
 // var db = mysql.createConnection({
