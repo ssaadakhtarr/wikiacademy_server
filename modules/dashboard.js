@@ -2,9 +2,12 @@ const db = require("../db/connection");
 
 exports.getDashboard = function (req, res) {
   db.query(`SELECT COUNT(*) FROM users`, (err, results) => {
+    console.log(err, results);
+    console.log(req.params.id);
     db.query(
       `SELECT rank,level,points,title,firstName,lastName,username,email,dateOfBirth, gender, occupation, areaOfInterest, summary, twitter, instagram, github, linkedin FROM users WHERE id=${req.params.id}`,
       (err, results1) => {
+        console.log(err, results1);
         const {
           rank,
           points,
