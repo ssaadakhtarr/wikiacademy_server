@@ -1,27 +1,31 @@
 const db = require("../db/connection");
 
 exports.getBlog = function (req, res) {
-  var newArr = [];
-  db.query(`SELECT * FROM blog WHERE blogStatus = 1`, (err, result) => {
-    // console.log(err);
-    // console.log(result);
-    // res.send(result);
-    result.map((i, index) => {
-      db.query(
-        `SELECT username FROM users WHERE id = ?`,
-        [i.userId],
-        (err, result1) => {
-          //    console.log(result1);
-          newArr.push({ ...i, username: result1[0].username });
-          //    console.log(newArr);
-          if (result.length === index + 1) {
-            // console.log(newArr);
-            res.send(newArr);
-          }
-        }
-      );
-    });
-  });
+  // var newArr = [];
+  db.query(`SELECT blog.*, users.username FROM blog, users WHERE blog.userId = users.id AND blog.blogStatus = 1`, (err, result) => {
+    console.log(result);
+        res.send(result);
+  })
+  // db.query(`SELECT * FROM blog WHERE blogStatus = 1`, (err, result) => {
+  //   // console.log(err);
+  //   // console.log(result);
+  //   // res.send(result);
+  //   result.map((i, index) => {
+  //     db.query(
+  //       `SELECT username FROM users WHERE id = ?`,
+  //       [i.userId],
+  //       (err, result1) => {
+  //         //    console.log(result1);
+  //         newArr.push({ ...i, username: result1[0].username });
+  //         //    console.log(newArr);
+  //         if (result.length === index + 1) {
+  //           console.log(newArr);
+  //           res.send(newArr);
+  //         }
+  //       }
+  //     );
+  //   });
+  // });
 };
 
 exports.addBlog = function (req, res) {
@@ -45,23 +49,29 @@ exports.getBlogPage = function (req, res) {
   var newArr = [];
   const blogId = req.body.blogid;
 
-  db.query(`SELECT * FROM blog WHERE blogId = ?`, [blogId], (err, result) => {
+  db.query(`SELECT blog.*, users.username, users.summary FROM blog, users WHERE blogId = ${blogId} AND blog.userId = users.id AND blog.blogStatus = 1`, (err, result) => {
     // console.log(err);
     // console.log(result);
-    db.query(
-      `SELECT username,summary from users WHERE id=?`,
-      [result[0].userId],
-      (err, result1) => {
-        // console.log(err);
-        // console.log(result1);
-        newArr.push({
-          ...result[0],
-          username: result1[0].username,
-          summary: result1[0].summary,
-        });
-        // console.log(newArr);
-        res.send(newArr);
-      }
-    );
-  });
+    res.send(result);
+  })
+
+  // db.query(`SELECT * FROM blog WHERE blogId = ?`, [blogId], (err, result) => {
+  //   // console.log(err);
+  //   // console.log(result);
+  //   db.query(
+  //     `SELECT username,summary from users WHERE id=?`,
+  //     [result[0].userId],
+  //     (err, result1) => {
+  //       // console.log(err);
+  //       // console.log(result1);
+  //       newArr.push({
+  //         ...result[0],
+  //         username: result1[0].username,
+  //         summary: result1[0].summary,
+  //       });
+  //       console.log(newArr);
+  //       res.send(newArr);
+  //     }
+  //   );
+  // });
 };

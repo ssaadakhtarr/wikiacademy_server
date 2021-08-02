@@ -10,12 +10,12 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: ["http://localhost:3000", "http://localhost:5000", "https://wikisecurityacademy.azurewebsite.net", "https://wikisecurityacademy.surge.sh"],
+    origin: ["http://localhost:3000", "http://localhost:5000", "https://wikisecurityacademy.azurewebsite.net", "https://wikisecurityacademy.surge.sh", "https://wikisec-backend.azurewebsites.net",],
     methods: ["GET", "POST"],
     credentials: true,
   })
 );
-
+app.set("trust proxy", 1);
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -26,6 +26,7 @@ app.use(
     resave: false,
     saveUninitialized: false,
     cookie: {
+      // domain: ".azurewebsite.net",
       httpOnly: false,
     },
   })
