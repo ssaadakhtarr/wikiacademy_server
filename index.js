@@ -16,6 +16,13 @@ app.use(
   })
 );
 app.set("trust proxy", 1);
+app.use(function(req, res, next) {
+  if(req.headers['x-arr-ssl'] && !req.headers['x-forwarded-proto']) {
+    req.headers['x-forwarded-proto'] = 'https';
+  }
+  return next();
+});
+
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -27,6 +34,8 @@ app.use(
     saveUninitialized: false,
     cookie: {
       // domain: ".azurewebsite.net",
+      sameSite: "none",
+      secure: "true",
       httpOnly: false,
     },
   })

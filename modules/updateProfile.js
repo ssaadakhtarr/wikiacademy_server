@@ -163,6 +163,7 @@ exports.deleteAccount = function (req, res) {
     bcrypt.compare(password, result[0].password, (err, response) => {
       if (response) {
         db.query(`DELETE FROM users WHERE id = ?`, [id], (err, result) => {
+          req.session.destroy();
           res.json({ message: "success" });
           console.log(result);
         });

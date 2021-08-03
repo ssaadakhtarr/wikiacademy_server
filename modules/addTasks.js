@@ -71,28 +71,26 @@ exports.sendTask = function (req, res) {
   const ans4 = req.body.ans4;
   const ans5 = req.body.ans5;
 
-  console.log("here");
+
 
   db.query(
     `SELECT * FROM rooms WHERE roomName = ?`,
     [roomName],
     (err, result) => {
       const roomId = result[0].roomsId;
-      console.log(roomId);
+
       db.query(
         `INSERT INTO tasks (taskNo, taskName, taskDescription, roomsId) VALUES (?, ?, ?, ?)`,
         [taskNo, taskName, taskDescription, roomId],
         (err, result) => {
-          console.log(err);
-          console.log(result);
+ 
         }
       );
       db.query(
         `SELECT tasksId FROM tasks WHERE roomsId = ? AND taskNo = ?`,
         [roomId, taskNo],
         (err, result) => {
-          console.log(err);
-          console.log(result);
+
           const quesAns = [
             [ques1, ans1, result[0].tasksId],
             [ques2, ans2, result[0].tasksId],
@@ -104,8 +102,7 @@ exports.sendTask = function (req, res) {
             `INSERT INTO questions (questions, answers, tasksId) VALUES ?`,
             [quesAns],
             (err, result) => {
-              console.log(err);
-              console.log(result);
+
             }
           );
         }

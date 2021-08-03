@@ -7,8 +7,6 @@ exports.login = function (req, res) {
     
     const query = `SELECT * FROM labusers WHERE username = '${username}' AND password = '${password}'`
     db.query(query, (err, result) => {
-        console.log(err);
-        console.log(result);
         res.send(result);
     })
 }

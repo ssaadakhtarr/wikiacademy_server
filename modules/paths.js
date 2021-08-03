@@ -9,7 +9,7 @@ exports.getPath = function (req, res) {
 
 // `SELECT blog.*,   users.username FROM blog, users WHERE blog.userId = users.id`
 
-    db.query(`SELECT paths.roomsId,   rooms.* FROM paths, rooms WHERE paths.${pathName} = 1 AND paths.roomsId = rooms.roomsId`,(err, result) => {
+    db.query(`SELECT paths.roomsId, rooms.* FROM paths, rooms WHERE paths.${pathName} = 1 AND paths.roomsId = rooms.roomsId`,(err, result) => {
         // console.log(err);
         // console.log(result);
         res.send(result);
